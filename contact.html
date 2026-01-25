@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Contact | Casey's Web Solutions</title>
-  <meta name="description" content="Contact Casey's Web Solutions for a free consultation." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Get in touch with Casey's Web Solutions to start your barbershop website today.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <div class="container nav">
+  <div class="container">
     <h1>Casey's Web Solutions</h1>
     <nav>
       <a href="index.html">Home</a>
@@ -21,36 +22,15 @@
   </div>
 </header>
 
-<section class="container page">
-  <h2>Contact</h2>
-  <p><strong>Free consultation. No pressure.</strong></p>
-  <p>No long-term contracts. Cancel anytime.</p>
-
-  <form action="https://formspree.io/f/yourid" method="POST" class="contact-form">
-    <label>Name
-      <input type="text" name="name" required>
-    </label>
-
-    <label>Email
-      <input type="email" name="email" required>
-    </label>
-
-    <label>Business Type
-      <input type="text" name="business">
-    </label>
-
-    <label>Message
-      <textarea name="message" rows="5" required></textarea>
-    </label>
-
-    <button class="btn" type="submit">Send Message</button>
+<section class="page container">
+  <h2>Contact Me</h2>
+  <form>
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number">
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
   </form>
-
-  <div class="contact-info">
-    <p>Email: caseyswebsolutions@gmail.com</p>
-    <p>Phone: (760) 819-9877</p>
-    <p>Instagram: @caseyswebsolutions</p>
-  </div>
 </section>
 
 <footer>
