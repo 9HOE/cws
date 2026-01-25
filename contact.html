@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <title>Contact | Casey's Web Solutions</title>
+  <meta name="description" content="Contact Casey's Web Solutions for a free consultation." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header>
-  <div class="container">
+  <div class="container nav">
     <h1>Casey's Web Solutions</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -21,9 +23,33 @@
 
 <section class="container page">
   <h2>Contact</h2>
-  <p>Email: <a href="mailto:caseyswebsolutions@gmail.com">caseyswebsolutions@gmail.com</a></p>
-  <p>Phone: <a href="tel:+17608199877">(760) 819-9877</a></p>
-  <p>Instagram: <a href="https://instagram.com/caseyswebsolutions" target="_blank">@caseyswebsolutions</a></p>
+  <p><strong>Free consultations available.</strong></p>
+
+  <form action="https://formspree.io/f/yourid" method="POST" class="contact-form">
+    <label>Name
+      <input type="text" name="name" required>
+    </label>
+
+    <label>Email
+      <input type="email" name="email" required>
+    </label>
+
+    <label>Business Type
+      <input type="text" name="business">
+    </label>
+
+    <label>Message
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+
+  <div class="contact-info">
+    <p>Email: caseyswebsolutions@gmail.com</p>
+    <p>Phone: (760) 819-9877</p>
+    <p>Instagram: @caseyswebsolutions</p>
+  </div>
 </section>
 
 <footer>
