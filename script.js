@@ -2,6 +2,7 @@
 
 const webhookURL = "https://discord.com/api/v10/webhooks/1465099927142137998/vmdgURrjqUPlZhoNYMTaDzjsVHXX4JCdy3ylFwo2h2n9_cHLlb1F2lN0Cm4n7h6kMYb6";
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
 
