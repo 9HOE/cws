@@ -1,58 +1,40 @@
-:root {
-  --red: #c62828;
-  --blue: #1e3a8a;
-  --dark: #0f172a;
-  --gray: #f3f4f6;
-  --white: #ffffff;
-}
-
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  font-family: Inter, system-ui, sans-serif;
-  color: var(--dark);
-  background: var(--white);
-  line-height: 1.6;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #111827;
 }
 
 .container {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
 }
 
 .site-header {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: #0f172a;
   padding: 1rem 0;
 }
 
 .logo {
+  color: #fff;
   font-weight: 700;
-  color: var(--blue);
 }
 
 .main-nav a {
-  margin-left: 1.25rem;
+  color: #fff;
+  margin-left: 1rem;
   text-decoration: none;
-  color: var(--dark);
-  font-weight: 500;
 }
 
 .hero {
   padding: 5rem 0;
   text-align: center;
-  background: linear-gradient(#ffffff, #eef2ff);
+  background: linear-gradient(to right, #dc2626, #1d4ed8);
+  color: white;
 }
 
 .hero-text {
@@ -64,114 +46,55 @@ body {
 }
 
 .section.alt {
-  background: var(--gray);
+  background: #f9fafb;
 }
 
-.grid,
-.pricing-grid {
+.grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
   background: white;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  position: relative;
-}
-
-.featured {
-  border: 2px solid var(--blue);
-}
-
-.badge {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  background: var(--red);
-  color: white;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-}
-
-.price {
-  font-size: 2rem;
-  color: var(--blue);
-  margin: 1rem 0;
+  border-radius: 8px;
 }
 
 .btn {
+  display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
 }
 
 .primary {
-  background: linear-gradient(90deg, var(--red), var(--blue));
+  background: #dc2626;
   color: white;
 }
 
-.small {
-  padding: 0.5rem 1rem;
-}
-
-.contact-form {
-  max-width: 500px;
-  margin: auto;
-  display: grid;
-  gap: 1rem;
-}
-
-input,
-textarea {
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-}
-
-.deposit-note {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
 .site-footer {
-  background: var(--dark);
-  color: #e5e7eb;
-  padding: 3rem 0 1.5rem;
-}
-
-.footer-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-.site-footer a {
-  color: #e5e7eb;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 0.4rem;
+  background: #0f172a;
+  color: white;
+  padding: 2rem 0;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 1rem;
   font-size: 0.9rem;
+  opacity: 0.8;
 }
 
-@media (max-width: 600px) {
-  .hero {
-    padding: 4rem 0;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
+.contact-center {
+  text-align: center;
+}
+
+.call-btn {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+/* iOS safety */
+html, body {
+  overflow-x: hidden;
 }
