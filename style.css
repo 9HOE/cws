@@ -1,270 +1,170 @@
-/* RESET & GLOBAL */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    width: 100%;
-    overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: "Inter", Arial, sans-serif;
-    line-height: 1.6;
-    color: #1c1c1c;
-    background: #f9f9f9;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+  color: #111;
+  background: #fff;
 }
 
+/* Layout */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+/* Navigation */
+.nav {
+  border-bottom: 1px solid #eee;
 }
 
-h1, h2, h3 {
-    color: #0a2540;
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
-/* HEADER / NAV */
-header {
-    background: #0a2540;
-    padding: 1rem 0;
-}
-
-header h1 {
-    color: #ffffff;
-    font-size: 1.3rem;
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 0.5rem;
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 nav a {
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 0.95rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
 }
 
-nav a:hover {
-    color: #c9a24d;
-}
-
-/* HERO */
+/* Hero */
 .hero {
-    background: linear-gradient(120deg,#0a2540,#123b63);
-    color: white;
-    padding: 4.5rem 1rem;
-    text-align: center;
+  padding: 4rem 0;
+  text-align: center;
 }
 
-.hero h1 {
-    color: white;
-    font-size: 2.3rem;
-    margin-bottom: 1rem;
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 600px;
+  margin: 0.5rem auto;
 }
 
+.note {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 1rem 0;
+}
+
+/* Buttons */
 .btn {
-    background: #c9a24d;
-    color: #0a2540;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: inline-block;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .btn:hover {
-    background: #b08b35;
+  opacity: 0.9;
 }
 
-/* SECTIONS */
-section {
-    padding: 3.5rem 0;
+.small {
+  padding: 0.5rem 1rem;
 }
 
-.page h2 {
-    margin-bottom: 2rem;
-    font-size: 1.9rem;
-    text-align: center;
+/* Grid & Cards */
+.grid,
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
 }
 
-/* FEATURES */
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 1.5rem;
+.card {
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  background: #fff;
 }
 
-.feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    text-align: center;
+.highlight {
+  border: 2px solid #000;
 }
 
-/* SERVICES */
-.service {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    margin-bottom: 1.5rem;
-    position: relative;
+/* Pricing */
+.price {
+  font-size: 2rem;
+  margin: 1rem 0;
 }
 
-.service::before {
-    content: "Next-Day Delivery";
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #c9a24d;
-    color: #0a2540;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: bold;
+.pricing-sub {
+  text-align: center;
+  color: #555;
+  margin-top: 0.5rem;
 }
 
-/* PRICING */
-.pricing-table {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap: 1.5rem;
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-.pricing-card {
-    background: white;
-    padding: 2.2rem;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    position: relative;
+ul li {
+  margin: 0.5rem 0;
 }
 
-.pricing-card .badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #c9a24d;
-    color: #0a2540;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-/* CONTACT FORM */
+/* Forms */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 100%;
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin-top: 1.5rem;
 }
 
-form input,
-form textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+input,
+textarea {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
 }
 
-form button {
-    padding: 12px;
-    background: #0a2540;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
+textarea {
+  min-height: 120px;
 }
 
-form button:hover {
-    background: #123b63;
-}
-
-/* POPUP */
-.form-popup {
-    position: fixed;
-    top: 20px;
-    right: -400px;
-    background: #0a2540;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    font-weight: bold;
-    z-index: 1000;
-    transition: right 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
-}
-
-.form-popup.show {
-    right: 20px;
-    opacity: 1;
-}
-
-/* FOOTER */
+/* Footer */
 footer {
-    background: #0a2540;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid #eee;
+  margin-top: 4rem;
+  color: #555;
 }
 
-/* MOBILE FIXES */
-@media (max-width: 768px) {
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .hero h2 {
+    font-size: 1.6rem;
+  }
 
-    header .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .hero h1 {
-        font-size: 1.9rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    section {
-        padding: 3rem 0;
-    }
+  nav a {
+    margin-left: 0.5rem;
+  }
 }
