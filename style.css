@@ -2,17 +2,21 @@
   --red: #c62828;
   --blue: #1e3a8a;
   --dark: #0f172a;
-  --light: #ffffff;
   --gray: #f3f4f6;
+  --white: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: Inter, system-ui, sans-serif;
-  line-height: 1.6;
   color: var(--dark);
-  background: var(--light);
+  line-height: 1.6;
+  background: var(--white);
 }
 
 .container {
@@ -22,8 +26,9 @@ body {
 }
 
 .site-header {
-  border-bottom: 1px solid #e5e7eb;
+  position: relative;
   background: white;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .header-inner {
@@ -38,7 +43,7 @@ body {
   color: var(--blue);
 }
 
-nav a {
+.main-nav a {
   margin-left: 1.25rem;
   text-decoration: none;
   color: var(--dark);
@@ -49,11 +54,6 @@ nav a {
   padding: 5rem 0;
   text-align: center;
   background: linear-gradient(#ffffff, #eef2ff);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
 }
 
 .section {
@@ -74,8 +74,8 @@ nav a {
 .card {
   background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   position: relative;
 }
 
@@ -96,22 +96,25 @@ nav a {
 
 .price {
   font-size: 2rem;
-  color: var(--blue);
   margin: 1rem 0;
+  color: var(--blue);
 }
 
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  border: none;
-  cursor: pointer;
   text-decoration: none;
   font-weight: 600;
+  border: none;
 }
 
 .primary {
   background: linear-gradient(90deg, var(--red), var(--blue));
   color: white;
+}
+
+.small {
+  padding: 0.5rem 1rem;
 }
 
 .contact-form {
@@ -121,7 +124,8 @@ nav a {
   gap: 1rem;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid #d1d5db;
@@ -130,7 +134,7 @@ input, textarea {
 .site-footer {
   background: var(--dark);
   color: #e5e7eb;
-  padding: 3rem 0;
+  padding: 3rem 0 1.5rem;
 }
 
 .footer-grid {
@@ -142,4 +146,14 @@ input, textarea {
 .site-footer a {
   color: #e5e7eb;
   text-decoration: none;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1rem;
+  font-size: 0.9rem;
 }
