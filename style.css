@@ -1,4 +1,6 @@
-/* RESET */
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
   box-sizing: border-box;
 }
@@ -11,65 +13,119 @@ html, body {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #111827;
+  color: #0f172a;
   background: #ffffff;
   line-height: 1.6;
 }
 
-/* LAYOUT */
+/* =========================
+   LAYOUT
+========================= */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
 
-/* HEADER */
+/* =========================
+   HEADER / NAV (TABS FIXED)
+========================= */
 .site-header {
-  background: #0f172a;
+  background: #0f172a; /* Navy */
   padding: 1rem 0;
+  border-bottom: 3px solid #dc2626; /* Red accent */
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .logo {
-  color: #fff;
+  color: #ffffff;
   font-weight: 700;
   font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .main-nav a {
-  color: #fff;
-  margin-left: 1.25rem;
+  color: #e5e7eb;
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
-.main-nav .active {
-  text-decoration: underline;
+.main-nav a:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #1d4ed8; /* Blue hover */
 }
 
-/* BUTTONS */
+.main-nav a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #dc2626; /* Red active tab */
+}
+
+/* =========================
+   BUTTONS
+========================= */
 .btn {
-  padding: 0.6rem 1.2rem;
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
   border-radius: 6px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .btn.primary {
-  background: #dc2626;
-  color: #fff;
+  background: #dc2626; /* Red */
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  background: #b91c1c;
 }
 
 .btn.small {
   font-size: 0.85rem;
 }
 
-/* SECTIONS */
+/* =========================
+   HERO
+========================= */
+.hero {
+  padding: 5rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, #1d4ed8, #0f172a);
+  color: #ffffff;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* =========================
+   SECTIONS
+========================= */
 .section {
   padding: 4rem 0;
 }
@@ -78,11 +134,32 @@ body {
   background: #f9fafb;
 }
 
-.pricing-header {
+.section h1,
+.section h2 {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-/* PRICING */
+/* =========================
+   GRID / CARDS
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  border-top: 4px solid #1d4ed8; /* Blue accent */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   PRICING
+========================= */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -91,32 +168,35 @@ body {
 
 .pricing-card {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 2.5rem 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   position: relative;
+  border-top: 5px solid #1d4ed8;
 }
 
 .pricing-card.featured {
-  border: 2px solid #dc2626;
+  border-top: 5px solid #dc2626;
 }
 
 .badge {
   position: absolute;
-  top: -12px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1d4ed8;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 0.45rem 0.9rem;
   font-size: 0.75rem;
   border-radius: 999px;
+  font-weight: 600;
 }
 
 .price {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 700;
   margin: 1rem 0;
+  color: #0f172a;
 }
 
 .pricing-card ul {
@@ -127,11 +207,28 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* FOOTER */
+/* =========================
+   CONTACT
+========================= */
+.contact-center {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+.call-btn {
+  font-size: 1.2rem;
+  padding: 1rem 2.2rem;
+  margin: 1.5rem 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .site-footer {
   background: #0f172a;
-  color: #fff;
-  padding: 2.5rem 0;
+  color: #ffffff;
+  padding: 3rem 0 2rem;
 }
 
 .footer-grid {
@@ -140,8 +237,12 @@ body {
   gap: 2rem;
 }
 
+.site-footer h4 {
+  margin-bottom: 0.5rem;
+}
+
 .site-footer a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -149,18 +250,29 @@ body {
   text-align: center;
   margin-top: 2rem;
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
-/* MOBILE SAFETY */
-@media (max-width: 600px) {
+/* =========================
+   MOBILE / iPHONE SAFETY
+========================= */
+@media (max-width: 700px) {
   .header-inner {
     flex-direction: column;
     gap: 0.75rem;
   }
 
-  .main-nav a {
-    margin-left: 0;
-    margin-right: 0.75rem;
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Disable iOS tap highlight */
+a, button {
+  -webkit-tap-highlight-color: transparent;
 }
