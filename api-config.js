@@ -1,6 +1,4 @@
-// Base path for all API calls (Vercel)
-const API_BASE = '/api'
-
+// api-config.js
 const API_CONFIG = {
   getUrl: (key) => {
     switch (key) {
@@ -10,6 +8,7 @@ const API_CONFIG = {
       case 'adminLogin': return '/api/admin-login';
       case 'adminLeads': return '/api/admin-leads';
       case 'adminReviews': return '/api/admin-reviews';
+      default: return '/';
     }
   }
-}
+};
