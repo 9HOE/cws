@@ -1,22 +1,63 @@
-document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault()
+// contact.js
 
-  const name = document.getElementById('name').value
-  const email = document.getElementById('email').value
-  const message = document.getElementById('message').value
+function setupContactForm() {
+  const form = document.getElementById('contact-form');
+  const messageEl = document.getElementById('contact-message');
 
-  const res = await fetch('/api/lead-submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, message })
-  })
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const data = await res.json()
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
 
-  if (data.success) {
-    alert('Message sent!')
-    e.target.reset()
-  } else {
-    alert(data.error || 'Something went wrong.')
-  }
-})
+    const formData = {
+      name: document.getElementById('contact-name').value.trim(),
+      email: document.getElementById('contact-email').value.trim(),
+      message: document.getElementById('contact-message-text').value.trim()
+    };
+
+    if (!formData.name || !formData.email || !formData.message) {
+      showMessage(messageEl, 'Please fill in all fields.', 'error');
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      return;
+    }
+
+    try {
+      const res = await fetch(API_CONFIG.getUrl('leadSubmit'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        showMessage(messageEl, 'Message sent! We will get back to you soon.', 'success');
+        form.reset();
+      } else {
+        showMessage(messageEl, data.error || 'Failed to send message.', 'error');
+      }
+    } catch (err) {
+      console.error('Error sending contact message:', err);
+      showMessage(messageEl, 'Unable to send message. Please try later.', 'error');
+    }
+
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
+}
+
+// Reuse message helper
+function showMessage(el, message, type) {
+  el.textContent = message;
+  el.className = 'form-message ' + type;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 5000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupContactForm();
+});
