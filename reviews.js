@@ -1,48 +1,111 @@
-const res = await fetch('/api/reviews')
+// reviews.js
 
-// Load approved reviews
+// Load approved reviews on page load
 async function loadReviews() {
-  const res = await fetch('/api/reviews-approved', {
-    method: 'GET'
-  })
+  const container = document.getElementById('reviews-container');
+  container.innerHTML = 'Loading reviews...';
 
-  const data = await res.json()
+  try {
+    const res = await fetch(API_CONFIG.getUrl('reviews'));
+    const data = await res.json();
 
-  const list = document.getElementById('reviews-list')
-  list.innerHTML = ''
-
-  if (!data.reviews) return
-
-  data.reviews.forEach(r => {
-    const div = document.createElement('div')
-    div.className = 'review'
-    div.innerHTML = `<strong>${r.name}</strong> (${r.rating}/5)<p>${r.message}</p>`
-    list.appendChild(div)
-  })
+    if (res.ok && data.reviews && data.reviews.length > 0) {
+      container.innerHTML = data.reviews.map(createReviewCard).join('');
+    } else {
+      container.innerHTML = 'No reviews yet. Be the first to leave a review!';
+    }
+  } catch (err) {
+    console.error('Error loading reviews:', err);
+    container.innerHTML = 'Unable to load reviews at this time.';
+  }
 }
 
-loadReviews()
+// Create HTML for a review card
+function createReviewCard(review) {
+  const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+  const date = new Date(review.created_at).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
 
-// Submit new review
-document.getElementById('review-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault()
+  return `
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">${stars}</span>
+        <span class="review-date">${date}</span>
+      </div>
+      <p class="review-text">${escapeHtml(review.review)}</p>
+      <p class="review-name">— ${escapeHtml(review.name)}</p>
+    </div>
+  `;
+}
 
-  const name = document.getElementById('review-name').value
-  const rating = document.getElementById('review-rating').value
-  const message = document.getElementById('review-message').value
+// Setup submission form
+function setupReviewForm() {
+  const form = document.getElementById('review-form');
+  const messageEl = document.getElementById('review-message');
 
-  const res = await fetch('/api/review-submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, rating, message })
-  })
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const data = await res.json()
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
 
-  if (data.success) {
-    alert('Review submitted for approval!')
-    e.target.reset()
-  } else {
-    alert(data.error || 'Failed to submit review.')
-  }
-})
+    const formData = {
+      name: document.getElementById('review-name').value.trim(),
+      rating: parseInt(document.getElementById('review-rating').value),
+      review: document.getElementById('review-text').value.trim()
+    };
+
+    if (!formData.name || !formData.rating || !formData.review) {
+      showMessage(messageEl, 'Please fill in all fields.', 'error');
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      return;
+    }
+
+    try {
+      const res = await fetch(API_CONFIG.getUrl('reviewSubmit'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        showMessage(messageEl, 'Thank you! Your review will be displayed after approval.', 'success');
+        form.reset();
+      } else {
+        showMessage(messageEl, data.error || 'Failed to submit review.', 'error');
+      }
+    } catch (err) {
+      console.error('Error submitting review:', err);
+      showMessage(messageEl, 'Unable to submit review. Please try later.', 'error');
+    }
+
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
+}
+
+// Show messages
+function showMessage(el, message, type) {
+  el.textContent = message;
+  el.className = 'form-message ' + type;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 5000);
+}
+
+// Escape HTML
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  loadReviews();
+  setupReviewForm();
+});
