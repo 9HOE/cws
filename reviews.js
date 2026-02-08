@@ -1,3 +1,5 @@
+const res = await fetch('/api/reviews')
+
 // Load approved reviews
 async function loadReviews() {
   const res = await fetch('/api/reviews-approved', {
